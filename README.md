@@ -66,13 +66,14 @@ V1では認証を行いません。
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Array    |follwer Object|データがない場合は空の配列|
+| Request twitter_account 1|follwer Object||"usagi_anime": {..}|
+| Request twitter_account 2|follwer Object||"kinmosa_anime": {..}|
+| Request twitter_account X|follwer Object||"lovelive_staff": {..}|
 
 ##### follwer Object
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| account    |String|Twitterアカウント|usagi_anime|
 | follwer    |Number|フォロワー数|12500|
 | created_at   |Number|データの作成日時 UNIXTIMESTAMP|1446132941|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
@@ -99,14 +100,9 @@ V1では認証を行いません。
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Array    |history Base Object|データがない場合は空の配列|
-
-##### history Base Object
-
-| Property     | Value               |description|Sample|
-| :------------ | :------------------ |:--------|:-------|
-| account    |String|Twitterアカウント|usagi_anime|
-| Array    |history Object|配列最大長=50||
+| Request twitter_account 1|history Object Array|配列最大長=50|"usagi_anime": []|
+| Request twitter_account 2|history Object Array||"kinmosa_anime": []|
+| Request twitter_account X|history Object Array||"lovelive_staff": []|
 
 
 ##### history Object
@@ -115,3 +111,5 @@ V1では認証を行いません。
 | :------------ | :------------------ |:--------|:-------|
 | follwer    |Number|フォロワー数|12500|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
+
+データは更新日時の昇順でソートされ格納されている
