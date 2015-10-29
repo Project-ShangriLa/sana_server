@@ -1,4 +1,4 @@
-#Sana 沙凪
+#Sana 紗凪
 ShangriLa Anime API Server for Twitter Data
 
 ## Sana Server システム概要
