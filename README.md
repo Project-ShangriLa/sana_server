@@ -10,9 +10,9 @@ ShangriLa Anime API Server for Twitter Data
 
 ### サーバーシステム要件
 
-* Ruby2.3+
+* Ruby 2.2+
 * フレームワーク Sinatra
-
+ß
 ### インストール
 
 #### DB
@@ -52,6 +52,32 @@ V1では認証を行いません。
 なし
 
 ### POST /anime/v1/twitter/follwer/status
+
+リクエストで指定されたアニメ公式アカウントの最新のフォロワー数を返却します
+
+#### Request Body
+
+| Property     | Value               |description|Sample|
+| :------------ | :------------------ |:--------|:-------|
+| Array    |String|対象のTwitterアカウントの配列|["usagi_anime","kinmosa_anime"] |
+
+
+#### Response Body
+
+| Property     | Value               |description|Sample|
+| :------------ | :------------------ |:--------|:-------|
+| Array    |follwer Object|データがない場合は空の配列|
+
+##### follwer Object
+
+| Property     | Value               |description|Sample|
+| :------------ | :------------------ |:--------|:-------|
+| account    |String|Twitterアカウント|usagi_anime|
+| follwer    |Number|フォロワー数|12500|
+| created_at   |Number|データの作成日時 UNIXTIMESTAMP|1446132941|
+| updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
+
+
 
 ### POST /anime/v1/twitter/follwer/history
 
