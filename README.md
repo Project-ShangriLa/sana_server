@@ -55,7 +55,7 @@ V1では認証を行いません。
 
 リクエストで指定されたアニメ公式アカウントの最新のフォロワー数を返却します
 
-#### Request Body
+#### Request Parameter
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
@@ -89,9 +89,9 @@ V1では認証を行いません。
 
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
-| accounts    |◯|String|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
+| accounts    |String|◯|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
 | size |Number|-|1アカウントの履歴最大数(※) デフォルト50|50|
-| start_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where start_date > updated_at |1446132941|
+| end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where end_date > updated_at |1446132941|
 
 ※履歴最大数はサーバー側で制限をかけます。50以上は無視され50に修正されます。
 
