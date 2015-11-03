@@ -75,8 +75,7 @@ V1では認証を行いません。
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
 | follwer    |Number|フォロワー数|12500|
-| created_at   |Number|データの作成日時 UNIXTIMESTAMP|1446132941|
-| updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
+| updated_at   |Number|データの更新日時 UNIX TIMESTAMP|1446132941|
 
 #### レスポンス例
 
