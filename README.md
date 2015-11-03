@@ -59,7 +59,7 @@ V1では認証を行いません。
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| accounts    |String|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
+| accounts    |String|対象のTwitterアカウントをカンマ区切りにしたもの|usagi_anime,kinmosa_anime|
 
 
 #### Response Body
@@ -78,6 +78,12 @@ V1では認証を行いません。
 | created_at   |Number|データの作成日時 UNIXTIMESTAMP|1446132941|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
 
+#### レスポンス例
+
+```
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime
+```
+
 
 
 ### GET /anime/v1/twitter/follwer/history
@@ -89,7 +95,7 @@ V1では認証を行いません。
 
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
-| accounts    |String|◯|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
+| accounts    |String|◯|対象のTwitterアカウントをカンマ区切りにしたもの|usagi_anime,kinmosa_anime|
 | size |Number|-|1アカウントの履歴最大数(※) デフォルト50|50|
 | end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where end_date > updated_at |1446132941|
 
@@ -112,3 +118,9 @@ V1では認証を行いません。
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
 
 データは更新日時の昇順でソートされ格納されている
+
+#### レスポンス例
+
+```
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?accounts=usagi_anime,kinmosa_anime
+```
