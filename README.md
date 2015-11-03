@@ -51,7 +51,7 @@ V1では認証を行いません。
 
 なし
 
-### POST /anime/v1/twitter/follwer/status
+### GET /anime/v1/twitter/follwer/status
 
 リクエストで指定されたアニメ公式アカウントの最新のフォロワー数を返却します
 
@@ -59,7 +59,7 @@ V1では認証を行いません。
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Array    |String|対象のTwitterアカウントの配列|["usagi_anime","kinmosa_anime"] |
+| accounts    |String|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
 
 
 #### Response Body
@@ -80,21 +80,20 @@ V1では認証を行いません。
 
 
 
-### POST /anime/v1/twitter/follwer/history
+### GET /anime/v1/twitter/follwer/history
 
 リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴返却します
 
-#### Request Body
+#### Request Parameter
 
 
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
-| Array    |String|◯|対象のTwitterアカウントの配列|["usagi_anime","kinmosa_anime"] |
-| size |Number|-|1アカウントの履歴最大数(※)|50|
-| start_date |Number|-|検索対象の履歴開始日(unixtimestamp)||
-| end_date |Number|-|検索対象の履歴終了日(unixtimestamp)||
+| accounts    |◯|String|対象のTwitterアカウントをカンマ区切りにしたもの|"usagi_anime","kinmosa_anime"|
+| size |Number|-|1アカウントの履歴最大数(※) デフォルト50|50|
+| start_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where start_date > updated_at |1446132941|
 
-※履歴最大数はサーバー側で制限をかけます、MAX50の予定
+※履歴最大数はサーバー側で制限をかけます。50以上は無視され50に修正されます。
 
 #### Response Body
 
