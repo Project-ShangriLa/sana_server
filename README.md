@@ -81,6 +81,17 @@ V1では認証を行いません。
 
 ```
 curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime
+
+{
+  "kinmosa_anime": {
+    "updated_at": 1411466007,
+    "follower": 42000
+  },
+  "gochiusa_anime": {
+    "updated_at": 1411466008,
+    "follower": 51345
+  }
+}
 ```
 
 
