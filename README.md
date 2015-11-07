@@ -102,7 +102,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 
 ### GET /anime/v1/twitter/follwer/history
 
-リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴返却します（最大100履歴）
+リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴を返却します。（最大100履歴）
 
 #### Request Parameter
 
@@ -110,7 +110,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
 | account    |String|◯|対象のTwitterアカウント|usagi_anime|
-| end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where end_date > updated_at |1446132941|
+| end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得。指定がない場合は現在日時。 where end_date > updated_at |1446132941|
 
 
 #### Response Body
