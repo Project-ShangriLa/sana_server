@@ -129,8 +129,57 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 
 データは更新日時の降順でソートされ格納されています。
 
-#### レスポンス例
+#### レスポンス例1
 
 ```
-curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime | jq .
 ```
+
+```json
+[
+  {
+    "updated_at": 1411466007,
+    "follower": 51345
+  },
+  {
+    "updated_at": 1410674102,
+    "follower": 50606
+  },
+  {
+    "updated_at": 1410673804,
+    "follower": 50607
+  },
+  {
+    "updated_at": 1407743045,
+    "follower": 46350
+  }
+]
+```
+
+
+#### レスポンス例2
+
+```
+curl "http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime&end_date=1407562541" | jq .
+```
+
+```json
+[
+  {
+    "updated_at": 1407560663,
+    "follower": 46165
+  },
+  {
+    "updated_at": 1407558786,
+    "follower": 46166
+  },
+  {
+    "updated_at": 1407556908,
+    "follower": 46162
+  }
+]
+```
+
+
+
+
