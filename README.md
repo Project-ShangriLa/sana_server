@@ -80,16 +80,20 @@ V1では認証を行いません。
 #### レスポンス例
 
 ```
-curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime,aldnoahzero | jq .
 
 {
-  "kinmosa_anime": {
-    "updated_at": 1411466007,
-    "follower": 42000
+  "aldnoahzero": {
+    "updated_at": 1432364949,
+    "follower": 51055
   },
-  "gochiusa_anime": {
-    "updated_at": 1411466008,
+  "usagi_anime": {
+    "updated_at": 1411466007,
     "follower": 51345
+  },
+  "kinmosa_anime": {
+    "updated_at": 1432364961,
+    "follower": 57350
   }
 }
 ```
