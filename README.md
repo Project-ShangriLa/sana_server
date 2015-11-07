@@ -110,7 +110,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
 | account    |String|◯|対象のTwitterアカウント|usagi_anime|
-| end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得。指定がない場合は現在日時。 where end_date > updated_at |1446132941|
+| end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得。指定がない場合は現在日時。 where updated_at < end_date |1446132941|
 
 
 #### Response Body
@@ -127,7 +127,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 | follwer    |Number|フォロワー数|12500|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
 
-データは更新日時の昇順でソートされ格納されています。
+データは更新日時の降順でソートされ格納されています。
 
 #### レスポンス例
 
