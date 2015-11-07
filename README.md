@@ -102,26 +102,22 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 
 ### GET /anime/v1/twitter/follwer/history
 
-リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴返却します
+リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴返却します（最大100履歴）
 
 #### Request Parameter
 
 
 | Property     |Value |Required|description|Sample|
 | :------------|:-----|:-------|:----------|:-----|
-| accounts    |String|◯|対象のTwitterアカウントをカンマ区切りにしたもの|usagi_anime,kinmosa_anime|
-| size |Number|-|1アカウントの履歴最大数(※) デフォルト50|50|
+| account    |String|◯|対象のTwitterアカウント|usagi_anime|
 | end_date |Number|-|unixtimestampで指定した日時より過去のデータを取得 where end_date > updated_at |1446132941|
 
-※履歴最大数はサーバー側で制限をかけます。50以上は無視され50に修正されます。
 
 #### Response Body
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Request twitter_account 1|history Object Array|配列最大長=50|"usagi_anime": []|
-| Request twitter_account 2|history Object Array||"kinmosa_anime": []|
-| Request twitter_account X|history Object Array||"lovelive_staff": []|
+| Array Object|history Object Array|取得できない場合は空の配列|[]|
 
 
 ##### history Object
@@ -131,10 +127,10 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 | follwer    |Number|フォロワー数|12500|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
 
-データは更新日時の昇順でソートされ格納されている
+データは更新日時の昇順でソートされ格納されています。
 
 #### レスポンス例
 
 ```
-curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?accounts=usagi_anime,kinmosa_anime
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime
 ```
