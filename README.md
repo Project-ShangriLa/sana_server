@@ -18,7 +18,7 @@ ShangriLa Anime API Server for Twitter Data
 #### DB
 * MySQL、もしくはMySQL互換サーバーのインストール
 * anime_admin_development データベース作成
-* 必要なDDLの投入
+* 必要なDDLの投入 [shangriLa](https://github.com/Project-ShangriLa/shangrila)
 
 #### sana batch
 
@@ -81,7 +81,9 @@ V1では認証を行いません。
 
 ```
 curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime,aldnoahzero | jq .
+```
 
+```json
 {
   "aldnoahzero": {
     "updated_at": 1432364949,
