@@ -66,9 +66,9 @@ V1では認証を行いません。
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| Request twitter_account 1|follwer Object||"usagi_anime": {..}|
-| Request twitter_account 2|follwer Object||"kinmosa_anime": {..}|
-| Request twitter_account X|follwer Object||"lovelive_staff": {..}|
+| Request twitter_account 1|follower Object||"usagi_anime": {..}|
+| Request twitter_account 2|follower Object||"kinmosa_anime": {..}|
+| Request twitter_account X|follower Object||"lovelive_staff": {..}|
 
 ##### follower Object
 
