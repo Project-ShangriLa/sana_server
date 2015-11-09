@@ -51,7 +51,7 @@ V1では認証を行いません。
 
 なし
 
-### GET /anime/v1/twitter/follwer/status
+### GET /anime/v1/twitter/follower/status
 
 リクエストで指定されたアニメ公式アカウントの最新のフォロワー数を返却します
 
@@ -70,17 +70,17 @@ V1では認証を行いません。
 | Request twitter_account 2|follwer Object||"kinmosa_anime": {..}|
 | Request twitter_account X|follwer Object||"lovelive_staff": {..}|
 
-##### follwer Object
+##### follower Object
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| follwer    |Number|フォロワー数|12500|
+| follower    |Number|フォロワー数|12500|
 | updated_at   |Number|データの更新日時 UNIX TIMESTAMP|1446132941|
 
 #### レスポンス例
 
 ```
-curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_anime,kinmosa_anime,aldnoahzero | jq .
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follower/status?accounts=usagi_anime,kinmosa_anime,aldnoahzero | jq .
 ```
 
 ```json
@@ -102,7 +102,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 
 
 
-### GET /anime/v1/twitter/follwer/history
+### GET /anime/v1/twitter/follower/history
 
 リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴を返却します。（最大100履歴）
 
@@ -126,7 +126,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
-| follwer    |Number|フォロワー数|12500|
+| follower    |Number|フォロワー数|12500|
 | updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
 
 データは更新日時の降順でソートされ格納されています。
@@ -134,7 +134,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/status?accounts=usagi_a
 #### レスポンス例1
 
 ```
-curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime | jq .
+curl -v http://api.moemoe.tokyo/anime/v1/twitter/follower/history?account=usagi_anime | jq .
 ```
 
 ```json
@@ -162,7 +162,7 @@ curl -v http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_a
 #### レスポンス例2
 
 ```
-curl "http://api.moemoe.tokyo/anime/v1/twitter/follwer/history?account=usagi_anime&end_date=1407562541" | jq .
+curl "http://api.moemoe.tokyo/anime/v1/twitter/follower/history?account=usagi_anime&end_date=1407562541" | jq .
 ```
 
 ```json
