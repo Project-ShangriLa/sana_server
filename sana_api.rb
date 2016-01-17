@@ -35,6 +35,8 @@ get '/anime/v1/twitter/follower/status' do
   }
 
   #p account_name_hash
+  return json result if base_ids.nil? || base_ids.length == 0
+
   target_ids = account_name_hash.map{ |k,v| v }
   id_name_map = account_name_hash.invert
 
@@ -73,8 +75,18 @@ get '/anime/v1/twitter/follower/history' do
   base = db[:bases].filter(:twitter_account => account).select(:id).order(:cours_id).reverse.first
 
   p base
+  return json result if base.nil?
 
-  history = db[:twitter_status_histories].filter(:bases_id => base[:id]).select(:follower, :updated_at).order(:updated_at).reverse.limit(100).all
+  #Sequel.expr(:col) > 123
+  history = []
+
+  if end_datetime.nil?
+    history = db[:twitter_status_histories].filter(:bases_id => base[:id]).select(:follower, :updated_at).order(:updated_at).reverse.limit(100).all
+  else
+    history = db[:twitter_status_histories].filter(:bases_id => base[:id]).select(:follower, :updated_at).where(Sequel.expr(:updated_at) < end_datetime).order(:updated_at).reverse.limit(100).all
+  end
+
+
 
   result = history.map {|x| { 'follower' => x[:follower],  'updated_at' => x[:updated_at].to_i } }
   json result
