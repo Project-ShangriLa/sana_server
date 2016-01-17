@@ -211,5 +211,144 @@ curl "http://api.moemoe.tokyo/anime/v1/twitter/follower/history?account=usagi_an
 ```
 
 
+### GET /anime/v1/twitter/follower/history/daily
 
+リクエストで指定されたアニメ公式アカウントのフォロワー数の履歴を日付単位で返却します。(最大30日）
+
+クライアント側でデータ加工が難しい場合(JavaScriptなど)はこちらのAPIを使用してください。
+
+#### Request Parameter
+
+
+| Property     |Value |Required|description|Sample|
+| :------------|:-----|:-------|:----------|:-----|
+| account    |String|◯|対象のTwitterアカウント|usagi_anime|
+| days |Number|-|現在から何日前までのデータを取得したいかを指定(無指定の場合7日間)|30|
+
+※daysが30を超えた値の場合は自動的に7が割り当てられます
+
+#### Response Body
+
+| Property     | Value               |description|Sample|
+| :------------ | :------------------ |:--------|:-------|
+| Array Object|history Object Array|取得できない場合は空の配列|[]|
+
+
+##### history Object
+
+| Property     | Value               |description|Sample|
+| :------------ | :------------------ |:--------|:-------|
+| follower    |Number|フォロワー数|12500|
+| updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
+| yyyy-mm-dd   |String|データの更新日時 yyyy-mm-dd形式|"2016-01-15"|
+
+データは更新日時の「昇順」でソートされ格納されています。
+
+#### レスポンス例1
+
+```
+curl -v "http://api.moemoe.tokyo/anime/v1/twitter/follower/history/daily?account=usagi_anime"| jq .
+```
+
+```json
+[
+  {
+    "follower": 153113,
+    "updated_at": 1452352632,
+    "yyyy-mm-dd": "2016-01-10"
+  },
+  {
+    "follower": 153413,
+    "updated_at": 1452441190,
+    "yyyy-mm-dd": "2016-01-11"
+  },
+  {
+    "follower": 153722,
+    "updated_at": 1452526159,
+    "yyyy-mm-dd": "2016-01-12"
+  },
+  {
+    "follower": 153885,
+    "updated_at": 1452611123,
+    "yyyy-mm-dd": "2016-01-13"
+  },
+  {
+    "follower": 153996,
+    "updated_at": 1452699620,
+    "yyyy-mm-dd": "2016-01-14"
+  },
+  {
+    "follower": 154087,
+    "updated_at": 1452784577,
+    "yyyy-mm-dd": "2016-01-15"
+  },
+  {
+    "follower": 154194,
+    "updated_at": 1452873102,
+    "yyyy-mm-dd": "2016-01-16"
+  }
+]
+```
+
+
+#### レスポンス例2
+
+```
+curl "http://api.moemoe.tokyo/anime/v1/twitter/follower/history/daily?account=usagi_anime&days=10" | jq .
+```
+
+```json
+[
+  {
+    "follower": 152159,
+    "updated_at": 1452094248,
+    "yyyy-mm-dd": "2016-01-07"
+  },
+  {
+    "follower": 152321,
+    "updated_at": 1452179172,
+    "yyyy-mm-dd": "2016-01-08"
+  },
+  {
+    "follower": 152796,
+    "updated_at": 1452267687,
+    "yyyy-mm-dd": "2016-01-09"
+  },
+  {
+    "follower": 153113,
+    "updated_at": 1452352632,
+    "yyyy-mm-dd": "2016-01-10"
+  },
+  {
+    "follower": 153413,
+    "updated_at": 1452441190,
+    "yyyy-mm-dd": "2016-01-11"
+  },
+  {
+    "follower": 153722,
+    "updated_at": 1452526159,
+    "yyyy-mm-dd": "2016-01-12"
+  },
+  {
+    "follower": 153885,
+    "updated_at": 1452611123,
+    "yyyy-mm-dd": "2016-01-13"
+  },
+  {
+    "follower": 153996,
+    "updated_at": 1452699620,
+    "yyyy-mm-dd": "2016-01-14"
+  },
+  {
+    "follower": 154087,
+    "updated_at": 1452784577,
+    "yyyy-mm-dd": "2016-01-15"
+  },
+  {
+    "follower": 154194,
+    "updated_at": 1452873102,
+    "yyyy-mm-dd": "2016-01-16"
+  }
+]
+```
 
