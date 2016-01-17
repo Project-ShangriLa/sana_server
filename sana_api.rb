@@ -34,11 +34,11 @@ get '/anime/v1/twitter/follower/status' do
     account_name_hash[base[:twitter_account]] = base[:id]
   }
 
-  p account_name_hash
+  #p account_name_hash
   target_ids = account_name_hash.map{ |k,v| v }
   id_name_map = account_name_hash.invert
 
-  p id_name_map
+  #p id_name_map
 
   status_list = db[:twitter_statuses].filter(:bases_id => target_ids).select(:bases_id, :follower, :updated_at).all
 
@@ -57,13 +57,27 @@ end
 get '/anime/v1/twitter/follower/history' do
   account = params[:account]
   end_date = params[:end_date]
+  end_datetime = nil
 
   result = {}
-  return json result if account.nil? or end_date.nil?
+  return json result if account.nil?
+
+  if end_date != nil
+    #変換できないと0に
+    end_datetime = Time.at(end_date.to_i)
+    #0だと1970年あたりになる
+  end
 
   db = db_connection()
-  data = { foo: "bar" }
-  json data
+
+  base = db[:bases].filter(:twitter_account => account).select(:id).order(:cours_id).reverse.first
+
+  p base
+
+  history = db[:twitter_status_histories].filter(:bases_id => base[:id]).select(:follower, :updated_at).order(:updated_at).reverse.limit(100).all
+
+  result = history.map {|x| { 'follower' => x[:follower],  'updated_at' => x[:updated_at].to_i } }
+  json result
 end
 
 get '/anime/v1/twitter/follower/history/week' do
