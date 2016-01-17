@@ -30,11 +30,39 @@ ShangriLa Anime API Server for Twitter Data
 bundle install
 ```
 
-### 起動方法
+### 起動方法-開発
 
 ```
-bundle exec ruby sana.rb
+bundle exec ruby sana_api.rb
 ```
+
+or
+
+```
+bundle exec rerun ruby sana_api.rb
+```
+
+or
+
+
+```
+bundle exec unicorn -c unicorn.rb
+```
+
+### 起動方法-本番
+
+```
+bundle exec unicorn -c unicorn.rb -D -E production
+```
+-D デーモン化
+-E production
+
+デーモン化した後の再起動
+
+```
+kill -HUP `cat /tmp/unicorn_sana.pid`
+```
+
 
 ## V1 API リファレンス
 
