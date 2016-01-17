@@ -10,7 +10,7 @@ timeout 120
 #stderr_path "#{@dir}log/unicorn.stderr.log"
 #stdout_path "#{@dir}log/unicorn.stdout.log"
 
-pid "/var/unicorn_sana_api.pid" #pidを保存するファイル
+#pid "/var/unicorn_sana_api.pid" #pidを保存するファイル
 listen 4000
 
 #listen "/var/unicorn_sana_api.sock", :backlog => 1024
