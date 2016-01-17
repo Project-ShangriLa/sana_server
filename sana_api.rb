@@ -92,14 +92,49 @@ get '/anime/v1/twitter/follower/history' do
   json result
 end
 
-get '/anime/v1/twitter/follower/history/week' do
-  account = params[:accounts]
-  end_date = params[:end_date]
+#バッチは不定期に毎日何回もDBにデータを格納するため日付単位のデータが欲しい場合はクライアントはこちらを呼びだす
+#基本的に00:00に近いデータをその日のデータとしている
+get '/anime/v1/twitter/follower/history/daily' do
+  LIMIT_DAYS = 30
+  account = params[:account]
+  days = params[:days]
 
-  result = {}
-  return json result if account.nil? or end_date.nil?
+  result = []
+  return json result if account.nil?
+
+  days_i = days.to_i
+
+  days_i = 7 if params[:days].nil? || days_i == 0 || days_i > LIMIT_DAYS
 
   db = db_connection()
-  data = { foo: "bar" }
-  json data
+  base = db[:bases].filter(:twitter_account => account).select(:id).order(:cours_id).reverse.first
+  return json result if base.nil?
+
+  #SQLはSana Batch(diff)から転載
+  def build_past_follower_sql(id, past_hours)
+    past_follower_sql = <<EOS
+SELECT bases_id,follower,get_date FROM twitter_status_histories WHERE
+bases_id = #{id} AND
+get_date
+between date_add(date(now()), interval - #{past_hours} day) and date_format(now(), '%Y.%m.%d') order by id;
+EOS
+    past_follower_sql
+  end
+
+  history = []
+  tmp_day =  nil
+  db.fetch(build_past_follower_sql(base[:id], days_i)) do |row|
+    if tmp_day != row[:get_date].day
+      history << row
+      tmp_day = row[:get_date].day
+    end
+  end
+
+  #
+  result = history.map{|h|
+    #h[:get_date] = h[:update_at] なのでどちらでもよい
+    { 'follower' => h[:follower], 'updated_at' => h[:get_date].to_i, 'yyyy-mm-dd' => h[:get_date].strftime('%Y-%m-%d') }
+  }
+
+  json result
 end
