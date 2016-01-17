@@ -239,7 +239,7 @@ curl "http://api.moemoe.tokyo/anime/v1/twitter/follower/history?account=usagi_an
 | Property     | Value               |description|Sample|
 | :------------ | :------------------ |:--------|:-------|
 | follower    |Number|フォロワー数|12500|
-| updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1446132941|
+| updated_at   |Number|データの更新日時 UNIXTIMESTAMP|1452784577|
 | yyyy-mm-dd   |String|データの更新日時 yyyy-mm-dd形式|"2016-01-15"|
 
 データは更新日時の「昇順」でソートされ格納されています。
