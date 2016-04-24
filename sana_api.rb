@@ -95,7 +95,8 @@ end
 #バッチは不定期に毎日何回もDBにデータを格納するため日付単位のデータが欲しい場合はクライアントはこちらを呼びだす
 #基本的に00:00に近いデータをその日のデータとしている
 get '/anime/v1/twitter/follower/history/daily' do
-  LIMIT_DAYS = 30
+  # FIXME 一時的に30日の制限を開放
+  LIMIT_DAYS = 120
   account = params[:account]
   days = params[:days]
 
