@@ -53,6 +53,7 @@ get '/anime/v1/twitter/follower/status' do
     result[name] = { 'follower' => follower, 'updated_at' => updated_at}
   }
 
+  db.disconnect
   json result
 end
 
@@ -89,6 +90,7 @@ get '/anime/v1/twitter/follower/history' do
 
 
   result = history.map {|x| { 'follower' => x[:follower],  'updated_at' => x[:updated_at].to_i } }
+  db.disconnect
   json result
 end
 
@@ -137,5 +139,6 @@ EOS
     { 'follower' => h[:follower], 'updated_at' => h[:get_date].to_i, 'yyyy-mm-dd' => h[:get_date].strftime('%Y-%m-%d') }
   }
 
+  db.disconnect
   json result
 end
