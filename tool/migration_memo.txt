@@ -1,0 +1,13 @@
+--- Local Mac 作業
+
+SELECT bases_id,follower,get_date,created_at,updated_at FROM twitter_status_histories where bases_id >= 365  INTO OUTFILE '/tmp/tw11hst_.csv'   FIELDS TERMINATED BY ','   OPTIONALLY ENCLOSED BY '"';
+
+scp -P XXXX /tmp/tw11hst_.csv XXXX@XXXX:~
+
+
+---- Sana Server 作業
+
+cp tw11hst_.csv /var/lib/mysql/
+
+LOAD DATA INFILE '/root/tw11hst_.csv' INTO TABLE twitter_status_histories
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' (bases_id,follower,get_date,created_at,updated_at);
