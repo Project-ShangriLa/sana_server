@@ -110,7 +110,7 @@ get '/anime/v1/twitter/follower/history/daily' do
   days_i = 7 if params[:days].nil? || days_i == 0 || days_i > LIMIT_DAYS
 
   db = db_connection()
-  base = db[:bases].filter(:twitter_account => account).select(:id).order(:cours_id).reverse.first
+  base = db[:bases].filter(:twitter_account => account).select(:id).order(:cours_id).first
   return json result if base.nil?
 
   #SQLはSana Batch(diff)から転載
