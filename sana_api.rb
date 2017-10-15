@@ -98,7 +98,7 @@ end
 #基本的に00:00に近いデータをその日のデータとしている
 get '/anime/v1/twitter/follower/history/daily' do
   # FIXME 一時的に30日の制限を開放
-  LIMIT_DAYS = 365
+  LIMIT_DAYS = 700
   account = params[:account]
   days = params[:days]
 
