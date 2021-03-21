@@ -2,12 +2,11 @@ require "sinatra"
 require "sinatra/json"
 require "sequel"
 
-#TODO DB接続情報は設定ファイルに書く
 configure do
   set(:database_name) { 'anime_admin_development' }
-  set(:database_hostname) { 'localhost' }
-  set(:database_username) { 'root' }
-  set(:database_password) { '' }
+  set(:database_hostname) { ENV['SANA_DB_HOST'] }
+  set(:database_username) { ENV['SANA_DB_USER'] }
+  set(:database_password) { ENV['SANA_DB_PASSWORD'] }
   set(:database_port) { '3306' }
 end
 

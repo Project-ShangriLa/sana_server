@@ -7,4 +7,4 @@ gem "sinatra"
 gem "sinatra-contrib"
 gem 'sequel'
 gem 'mysql2'
-
+gem 'puma'

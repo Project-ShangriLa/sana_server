@@ -24,6 +24,14 @@ ShangriLa Anime API Server for Twitter Data
 
 * 実際にTwitterのデータを取り扱うにはTwitterから定期的にデータを取得するバッチを実行する必要があります
 
+### DB接続設定
+
+```
+export SANA_DB_HOST=""
+export SANA_DB_USER=""
+export SANA_DB_PASSWORD=""
+```
+
 #### API Server
 
 ```
